@@ -11,8 +11,8 @@ public class StateController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	    pauseMenu = GameObject.Find("PauseMenu");
-        endMenu = GameObject.Find("EndMenu");
+	    pauseMenu = GameObject.Find("pauseMenu");
+        endMenu = GameObject.Find("endMenu");
 
         endMenu.SetActive(false);
         pauseMenu.SetActive(false);
@@ -41,19 +41,22 @@ public class StateController : MonoBehaviour {
             t.text = "You have died.";
         }
 
-
+        Time.timeScale = 0;
 
     }
 
     public void pause()
     {
+        
         if (!paused())
         {
+            state = "Paused";
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
         }
         else
         {
+            state = "Active";
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
         }

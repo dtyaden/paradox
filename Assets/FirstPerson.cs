@@ -13,7 +13,9 @@ public class FirstPerson : MonoBehaviour {
     public float inversion = -1;
 	public GameObject End;
     // Use this for initialization
-    	
+
+    public float health = 100;
+    
 	void Start() {
 		positions = new ArrayList ();
 		rotations = new ArrayList ();
