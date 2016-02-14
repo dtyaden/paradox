@@ -12,11 +12,14 @@ public class FirstPerson : MonoBehaviour {
     public float xSensitivity, ySensitivity;
     public float inversion = -1;
 	public GameObject End;
+    public StateController state;
+
     // Use this for initialization
 
-    public float health = 100;
+    public float health = 500;
     
 	void Start() {
+        state = GameObject.Find("StateController").GetComponent<StateController>();
 		positions = new ArrayList ();
 		rotations = new ArrayList ();
 		End = GameObject.Find ("End");
@@ -50,6 +53,8 @@ public class FirstPerson : MonoBehaviour {
         rotateCharacter(playerRotation);
         pitchCamera(pitch);
 
+        if (health <= 0)
+            state.end(0);
 
     }
 

@@ -10,12 +10,14 @@ public class Key : MonoBehaviour {
 	Vector3 keyStartPos;
 	Quaternion startRot;
 	public bool phase2 = false;
+    StateController state;
 
 	void Start () {
 		GameObject control = GameObject.Find ("Controller");
 		startPos = control.transform.position;
 		startRot = control.transform.rotation;
 		keyStartPos = GameObject.Find ("Key").transform.position;
+        state = GameObject.Find("StateController").GetComponent<StateController>();
 	}
 		
 	void OnTriggerEnter (Collider other) {
@@ -45,7 +47,7 @@ public class Key : MonoBehaviour {
 		toMove.transform.rotation = startRot;
 		keyToMove.transform.position = keyStartPos;
 		if (phase2 == true) {
-			//End the Game!
+            state.end(1);
 		}
 		phase2 = true;
 		//Startup the AI as a copy of the player's first run
