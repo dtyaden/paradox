@@ -24,6 +24,8 @@ public class Key : MonoBehaviour {
 		GameObject toMove = GameObject.Find ("Controller");
 		GameObject keyToMove = GameObject.Find ("Key");
 
+		toMove.GetComponent<Grab> ().drop ();
+
 		if (Application.loadedLevelName == "Level2") {
 			switch ((int)Mathf.Round (Random.Range (.5f, 4.4f))) {
 			case 1:

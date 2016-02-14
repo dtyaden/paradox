@@ -22,7 +22,7 @@ public class PastMan : MonoBehaviour {
         if (state.paused() || state.state == "End")
             return;
 
-		if (End.GetComponent<Key> ().phase2) {
+		if (End.GetComponent<Key> ().phase2 && arrayIndex < Player.GetComponent<FirstPerson> ().positions.Count) {
 			transform.position = (Vector3) Player.GetComponent<FirstPerson> ().positions[arrayIndex];
 			transform.rotation = (Quaternion) Player.GetComponent<FirstPerson> ().rotations[arrayIndex];
 			arrayIndex++;
