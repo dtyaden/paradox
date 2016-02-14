@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -14,8 +15,8 @@ public class StateController : MonoBehaviour {
 	    pauseMenu = GameObject.Find("pauseMenu");
         endMenu = GameObject.Find("endMenu");
 
+		pauseMenu.SetActive(false);
         endMenu.SetActive(false);
-        pauseMenu.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -28,8 +29,14 @@ public class StateController : MonoBehaviour {
 
 	}
 
+	void tempend() {
+		SceneManager.LoadScene ("StartZone");
+	}
+
     public void end(int success)
     {
+		tempend ();
+		return;
         endMenu.SetActive(true);
         Text t = endMenu.transform.Find("Text").GetComponent<Text>();
         if (success == 1)

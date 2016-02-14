@@ -5,6 +5,6 @@ using System.Collections;
 public class Door2 : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
-		SceneManager.LoadScene ("Assets/Level2");
+		SceneManager.LoadScene ("Level2");
 	}
 }

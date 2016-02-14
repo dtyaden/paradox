@@ -26,7 +26,6 @@ public class Grab : MonoBehaviour {
 
 	void Update() {
 		if (Input.GetKeyDown ("e")) {
-			Debug.Log ("e????");
 			if (grabbedObject == null) {
 				tryGrab (GetCenterHover (5));
 			} else {
@@ -38,7 +37,5 @@ public class Grab : MonoBehaviour {
 			Vector3 HoverPos = gameObject.transform.position + Camera.main.transform.forward;
 			grabbedObject.transform.position = HoverPos;
 		}
-
-		Debug.Log ("grabbedobject: " + grabbedObject);
 	}
 }
