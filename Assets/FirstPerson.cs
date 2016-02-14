@@ -3,21 +3,32 @@ using System.Collections;
 
 public class FirstPerson : MonoBehaviour {
 
+	public ArrayList positions;
+	public ArrayList rotations;
+
     public CharacterController controller;
     public float speed;
     public Camera camera;
     public float xSensitivity, ySensitivity;
     public float inversion = -1;
+	public GameObject End;
     // Use this for initialization
-    void Start() {
-
+    	
+	void Start() {
+		positions = new ArrayList ();
+		rotations = new ArrayList ();
+		End = GameObject.Find ("End");
     }
 
     // Update is called once per frame
     void Update() {
         Vector3 movement, rotation;
         float vertical, horizontal, pitch, playerRotation;
-
+		if (!End.GetComponent<Key> ().phase2) {
+			positions.Add (transform.position);
+			rotations.Add (transform.rotation);
+		}
+			
         vertical = Input.GetAxis("Vertical");
 
         horizontal = Input.GetAxis("Horizontal");
