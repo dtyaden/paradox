@@ -38,7 +38,7 @@ public class StateController : MonoBehaviour {
         }
         else
         {
-            t.text = "you fucked up moron, fucking idiot piece of shit fuck git.";
+            t.text = "You have died.";
         }
 
 

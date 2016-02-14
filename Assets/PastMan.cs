@@ -9,12 +9,19 @@ public class PastMan : MonoBehaviour {
 	GameObject End;
 	int arrayIndex;
 
+    StateController state;
+
 	void Start() {
 		Player = GameObject.Find ("Controller");
 		End = GameObject.Find ("End");
+
+        state = GameObject.Find("StateController").GetComponent<StateController>();
 	}
 
 	void Update() {
+        if (state.paused() || state.state == "End")
+            return;
+
 		if (End.GetComponent<Key> ().phase2) {
 			transform.position = (Vector3) Player.GetComponent<FirstPerson> ().positions[arrayIndex];
 			transform.rotation = (Quaternion) Player.GetComponent<FirstPerson> ().rotations[arrayIndex];
