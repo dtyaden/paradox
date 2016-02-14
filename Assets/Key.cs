@@ -19,10 +19,29 @@ public class Key : MonoBehaviour {
 	}
 		
 	void OnTriggerEnter (Collider other) {
-		Debug.Log (other.name);
 		GameObject toMove = GameObject.Find ("Controller");
 		GameObject keyToMove = GameObject.Find ("Key");
-		toMove.transform.position = startPos;
+
+		if (Application.loadedLevelName == "Level2") {
+			switch ((int)Mathf.Round (Random.Range (.5f, 4.4f))) {
+			case 1:
+				toMove.transform.position = GameObject.Find ("StandardStart").transform.position;
+				break;
+			case 2:
+				toMove.transform.position = GameObject.Find ("DestStart").transform.position;
+				break;
+			case 3:
+				toMove.transform.position = GameObject.Find ("EmptyStart").transform.position;
+				break;
+			case 4:
+				toMove.transform.position = GameObject.Find ("KeyStart").transform.position;
+				break;
+			default:
+				break;
+			}
+		} else {
+			toMove.transform.position = startPos;
+		}
 		toMove.transform.rotation = startRot;
 		keyToMove.transform.position = keyStartPos;
 		if (phase2 == true) {
