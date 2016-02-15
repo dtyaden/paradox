@@ -7,16 +7,22 @@ public class StateController : MonoBehaviour {
 
     public GameObject pauseMenu;
     public GameObject endMenu;
+	public GameObject damageScreen;
+
 
     public string state = "Active";
 
 	// Use this for initialization
 	void Start () {
-	    pauseMenu = GameObject.Find("pauseMenu");
-        endMenu = GameObject.Find("endMenu");
+
+		pauseMenu = Instantiate(pauseMenu) as GameObject;
+	   // pauseMenu = GameObject.Find("pauseMenu");
+		endMenu = Instantiate(endMenu) as GameObject;
+		damageScreen = Instantiate(damageScreen) as GameObject;
 
 		pauseMenu.SetActive(false);
         endMenu.SetActive(false);
+
 	}
 	
 	// Update is called once per frame

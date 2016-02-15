@@ -36,7 +36,7 @@ public class PastMan : MonoBehaviour {
 
 			if (Physics.Raycast (transform.position, directionToPlayer.normalized, out ray, 5)) {
 				if (ray.collider.gameObject == Player) {
-                    Player.GetComponent<FirstPerson>().health--;
+					Player.GetComponent<FirstPerson>().takeDamage(1.0f);
 					Debug.Log("Saw Player!!!!!!");
 				}
 			}

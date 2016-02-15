@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class FirstPerson : MonoBehaviour {
 
@@ -14,15 +15,21 @@ public class FirstPerson : MonoBehaviour {
 	public GameObject End;
     public StateController state;
 
+	//time since last damage taken
+	private float lastDamage = 0;
+
     // Use this for initialization
 
-    public float health = 500;
+    public float health = 100;
+	public float maxHealth;
     
 	void Start() {
         state = GameObject.Find("StateController").GetComponent<StateController>();
 		positions = new ArrayList ();
 		rotations = new ArrayList ();
 		End = GameObject.Find ("End");
+
+		maxHealth = health;
     }
 
     // Update is called once per frame
@@ -56,6 +63,7 @@ public class FirstPerson : MonoBehaviour {
         if (health <= 0)
             state.end(0);
 
+		regen();
     }
 
     void move(Vector3 v) {
@@ -78,4 +86,19 @@ public class FirstPerson : MonoBehaviour {
         rotation.y += playerRotation * Time.deltaTime * ySensitivity;
         controller.transform.localEulerAngles = rotation;
     }
+
+	public void takeDamage(float damage){
+		health -= damage;
+		Debug.Log("health: " + health);
+		lastDamage = Time.time;
+	}
+
+	/**
+	 * regen health after three seconds of not taking damage
+	 */
+	private void regen(){
+		if(Time.time - lastDamage > 3 && health < maxHealth)
+			health++;
+	}
+
 }
