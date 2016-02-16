@@ -23,6 +23,7 @@ public class StateController : MonoBehaviour {
 		pauseMenu.SetActive(false);
         endMenu.SetActive(false);
 
+		showCursor(false);
 	}
 	
 	// Update is called once per frame
@@ -32,6 +33,8 @@ public class StateController : MonoBehaviour {
         {
             pause();
         }
+
+		debugUI();
 
 	}
 
@@ -60,15 +63,18 @@ public class StateController : MonoBehaviour {
 
     public void pause()
     {
-        
+		Debug.Log("pause");
+		Debug.Log(state);
         if (!paused())
         {
             state = "Paused";
             pauseMenu.SetActive(true);
+			showCursor(true);
             Time.timeScale = 0;
         }
         else
         {
+			showCursor(false);
             state = "Active";
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
@@ -81,5 +87,17 @@ public class StateController : MonoBehaviour {
             return true;
         return false;
     }
+
+	public void showCursor(bool state){
+		Cursor.visible = state;
+
+		if(state)
+			Cursor.lockState = CursorLockMode.Confined;
+		else Cursor.lockState = CursorLockMode.Locked;
+	}
+
+	private void debugUI(){
+		
+	}
 
 }

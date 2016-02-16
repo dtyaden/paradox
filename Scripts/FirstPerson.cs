@@ -62,8 +62,7 @@ public class FirstPerson : MonoBehaviour {
 
         if (health <= 0)
             state.end(0);
-
-		regen();
+		else regen();
     }
 
     void move(Vector3 v) {

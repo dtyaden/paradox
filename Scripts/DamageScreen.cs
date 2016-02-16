@@ -22,7 +22,6 @@ public class DamageScreen : MonoBehaviour {
 
 		setAlpha(alpha);
 
-		Debug.Log("alpha "+ alpha);
 	}
 
 	public void setAlpha(float alpha){
